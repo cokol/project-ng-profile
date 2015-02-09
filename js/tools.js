@@ -1,6 +1,106 @@
 (function($) {
 
     $(document).ready(function() {
+		
+				
+		
+				// Оценка участникам
+				
+				$("body").on("click",".item-rate-list-one-value",function(e) {
+					e.stopPropagation();
+					var item = $(this);
+					if (!item.hasClass("open") && !$(e.target).hasClass("grade-button")) {
+						
+						$(".grade-popup .grade-button-cancel").click();
+						
+						item.addClass("open")
+						
+						item.append("<div class='grade-popup' />");
+						
+						var gradePopup = item.find(".grade-popup");
+						
+						gradePopup.append("<div class='frame'><ul class='items'></ul></div>");
+						
+						
+						var gradeSelector = gradePopup.find(".frame");
+						var slidee = gradeSelector.find("ul.items");
+						
+						for (i=0;i<=100;i++) {
+							slidee.append("<li>"+i+"</li>")
+						}
+						
+						gradePopup.append(gradeSelector);
+						gradePopup.append("<div class='grade-buttons clearfix'><div class='grade button grade-button-cancel'></div><div class='grade-button grade-button-ok'></div></div>")
+						
+						var initValue = parseInt(item.find(".item-rate-list-one-value-text span").html());
+						
+						var $frame  = gradeSelector;
+						var $slidee = $frame.children('ul').eq(0);
+
+						// Call Sly on frame
+						$frame.sly({
+							itemNav: 'forceCentered',
+							activateMiddle: 1,
+							smart: 1,
+							activateOn: 'click',
+							mouseDragging: 1,
+							touchDragging: 1,
+							releaseSwing: 1,
+							scrollBy: 1,
+							activatePageOn: 'click',
+							speed: 300,
+							elasticBounds: 1,
+							easing: 'easeOutExpo',
+							dragHandle: 1,
+							dynamicHandle: 1,
+							clickBar: 1
+						});
+						
+						$frame.sly("slideTo",(initValue-3)*30);
+
+						//$slidee.find("li").eq(initValue).trigger("click");
+						
+						$frame.on("mousewheel", function() {
+							return false;
+						});
+						
+						
+					} else if ($(e.target).hasClass("grade-button-ok")) {
+						var gradePopup = item.find(".grade-popup");
+						var gradeVal = gradePopup.find("li.active").html();
+						item.find(".item-rate-list-one-value-text span").html(gradeVal);
+						item.removeClass("open");
+						gradePopup.remove();
+					} else if ($(e.target).hasClass("grade-button-cancel")) {
+						var gradePopup = item.find(".grade-popup");
+						item.removeClass("open");
+						gradePopup.remove();
+					}
+					
+					
+				});
+				
+				// Закрываем попап с оценкой при клике вне него
+				
+				// $("body").on("click",function(e) {
+					// if (!$(e.target).hasClass("open")) {
+						// $(".grade-popup .grade-button-cancel").click();
+					// }
+				// })
+				
+				// Подсказка в заголовке
+				
+				$("body").on("click",".title-hint .hint-trigger",function() {
+					$(this).next(".hint-content").fadeToggle(150)
+				})
+				
+				// Закрытие подсказки
+				
+				$("body").on("click",function(e) {
+					if (!$(e.target).parents().hasClass("title-hint")) {
+						$(".title-hint .hint-content").fadeOut(150)
+					}
+				})
 
         // поле поиска
         $('.search-input input').each(function() {

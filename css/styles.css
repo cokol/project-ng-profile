@@ -339,3 +339,136 @@ footer {min-width:1000px; width:100%; position:relative; margin-top:-90px}
 .profile-comment .item-input textarea {height:58px}
 .profile-comment-submit {padding:38px 0 0 0; text-align:center}
 .profile-comment-submit input {position:relative; vertical-align:top; overflow:visible; margin:0; padding:0 30px; outline:none; border:none; border-bottom:3px solid #1eb104; height:32px; background:#29c205; color:#fff; font:18px/32px ProximaNovaRegular, sans-serif; cursor:pointer; -webkit-appearance:none}
+
+.clearfix {
+  zoom:1;
+}
+
+.clearfix:after {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+}
+
+/* Ћценка участнику */
+
+.item-rate-list-one-value {
+  cursor:pointer;
+	position:relative;
+}
+
+.grade-popup {
+  position:absolute;
+	left:-2px;
+	top:-80px;
+	background:#fff;
+	padding:18px 25px;
+	z-index:100;
+	cursor:default;
+}
+
+/* Frame */
+.frame {
+	width: 50px;
+	height: 210px;
+	overflow: hidden;
+	position:relative;
+}
+
+.frame:after {
+	content:"";
+	background:url(../images/grade-active.png) 0 0 no-repeat;
+  width:50px;
+	height:31px;
+	position:absolute;
+	left:0;
+	top:50%;
+	margin-top:-16px;
+}
+
+.frame .slidee {
+	padding: 0;
+	background: #fff;
+}
+.frame ul.items {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	font: 30px/30px ProximaNovaRegular, sans-serif;
+}
+.frame ul.items li {
+	float: left;
+	width: 100%;
+	height: 30px;
+	margin: 0 0 0 0;
+	padding: 0;
+	color: #000;
+	text-align: center;
+	cursor: pointer;
+}
+.frame ul.items li.active {
+}
+
+.grade-buttons {
+  margin:16px -11px 0 -11px;
+}
+
+.grade-button-cancel {
+  width:32px;
+	height:32px;
+	background:url(../images/grade-buttons.png) 0 -32px no-repeat;
+	float:left;
+	cursor:pointer;
+}
+
+.grade-button-ok {
+  width:32px;
+	height:32px;
+	background:url(../images/grade-buttons.png) 0 0 no-repeat;
+	float:right;
+	cursor:pointer;
+}
+
+.title-hint {
+  font-family: ProximaNovaRegular;
+	font-size: 15px;
+	line-height: 18px;
+	display: inline-block;
+	position: relative;
+	top: -5px;
+	z-index: 60;
+}
+
+.title-hint .hint-trigger {
+  background: #fff;
+	border-radius: 3px;
+	font-size: 11px;
+	cursor: pointer;
+	padding: 2px 6px 1px 6px;
+	margin: 0 0 0 3px;
+}
+
+.title-hint .hint-content {
+  position: absolute;
+	left: 100%;
+	top: -16px;
+	background: #fff;
+	border-radius: 6px;
+	padding: 17px 31px;
+	margin: 0 0 0 10px;
+	width: 238px;
+	display:none;
+}
+
+.title-hint .hint-content:before {
+  content: "";
+	width: 7px;
+	height: 19px;
+	background: url(../images/hint-pt-l.png) 0 0 no-repeat;
+	position: absolute;
+	right: 100%;
+	top: 17px;
+}
