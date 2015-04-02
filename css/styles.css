@@ -209,6 +209,7 @@ header:after {content:"."; display:block; clear:both; visibility:hidden; height:
 .item-edit-text {float:left; width:100%; padding:23px 0 0 0}
 .item-edit-text-inner {font-size:14px; line-height:18px; padding:29px 33px 31px 33px; background:#faf9f8}
 .item-edit-text-inner div {font-family:ProximaNovaBold, sans-serif; text-transform:uppercase; font-weight:normal}
+.item-edit-text-inner textarea {width:100%; box-sizing:border-box}
 .item-edit-links {float:left; width:100%; padding:26px 0 12px 0; text-align:center; font:18px/32px ProximaNovaRegular, sans-serif}
 .item-edit-links a {display:inline-block; height:30px; width:163px; text-decoration:none; color:#fff; margin:0 0 0 5px}
 .item-edit-links a:first-child {margin:0}

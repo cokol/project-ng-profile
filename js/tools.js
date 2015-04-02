@@ -1,39 +1,39 @@
 (function($) {
 
     $(document).ready(function() {
-		
-				
-		
+
+
+
 				// Оценка участникам
-				
+
 				$("body").on("click",".item-rate-list-one-value",function(e) {
 					e.stopPropagation();
 					var item = $(this);
 					if (!item.hasClass("open") && !$(e.target).hasClass("grade-button")) {
-						
+
 						$(".grade-popup .grade-button-cancel").click();
-						
+
 						item.addClass("open")
-						
+
 						item.append("<div class='grade-popup' />");
-						
+
 						var gradePopup = item.find(".grade-popup");
-						
+
 						gradePopup.append("<div class='frame'><ul class='items'></ul></div>");
-						
-						
+
+
 						var gradeSelector = gradePopup.find(".frame");
 						var slidee = gradeSelector.find("ul.items");
-						
+
 						for (i=0;i<=100;i++) {
 							slidee.append("<li>"+i+"</li>")
 						}
-						
+
 						gradePopup.append(gradeSelector);
 						gradePopup.append("<div class='grade-buttons clearfix'><div class='grade button grade-button-cancel'></div><div class='grade-button grade-button-ok'></div></div>")
-						
+
 						var initValue = parseInt(item.find(".item-rate-list-one-value-text span").html());
-						
+
 						var $frame  = gradeSelector;
 						var $slidee = $frame.children('ul').eq(0);
 
@@ -55,20 +55,34 @@
 							dynamicHandle: 1,
 							clickBar: 1
 						});
-						
+
 						$frame.sly("slideTo",(initValue-3)*30);
 
 						//$slidee.find("li").eq(initValue).trigger("click");
-						
+
 						$frame.on("mousewheel", function() {
 							return false;
 						});
-						
-						
+
+
 					} else if ($(e.target).hasClass("grade-button-ok")) {
 						var gradePopup = item.find(".grade-popup");
 						var gradeVal = gradePopup.find("li.active").html();
 						item.find(".item-rate-list-one-value-text span").html(gradeVal);
+
+                        var ending_id = gradeVal % 10;
+                        var tens = gradeVal % 100;
+                        if (ending_id == 0 || (tens > 10 && tens < 20)) {
+                            ending = 'ов';
+                        } else if (ending_id == 1) {
+                            ending = '';
+                        } else if (ending_id <= 4) {
+                            ending = 'а';
+                        } else {
+                            ending = 'ов';
+                        }
+                        item.find(".item-rate-list-one-value-name").html('балл' + ending);
+
 						item.removeClass("open");
 						gradePopup.remove();
 					} else if ($(e.target).hasClass("grade-button-cancel")) {
@@ -76,26 +90,26 @@
 						item.removeClass("open");
 						gradePopup.remove();
 					}
-					
-					
+
+
 				});
-				
+
 				// Закрываем попап с оценкой при клике вне него
-				
-				// $("body").on("click",function(e) {
-					// if (!$(e.target).hasClass("open")) {
-						// $(".grade-popup .grade-button-cancel").click();
-					// }
-				// })
-				
+
+				$("body").on("click",function(e) {
+					 if (!$(e.target).hasClass("open")) {
+						$(".grade-popup .grade-button-cancel").click();
+					 }
+				 })
+
 				// Подсказка в заголовке
-				
+
 				$("body").on("click",".title-hint .hint-trigger",function() {
 					$(this).next(".hint-content").fadeToggle(150)
 				})
-				
+
 				// Закрытие подсказки
-				
+
 				$("body").on("click",function(e) {
 					if (!$(e.target).parents().hasClass("title-hint")) {
 						$(".title-hint .hint-content").fadeOut(150)
@@ -129,18 +143,21 @@
 
                 var curIndex = $('.list-content-items tr').index(curTR);
                 var prevIndex = curIndex - 1;
-                if (prevIndex < 0) {
-                    prevIndex = $('.list-content-items tr').length - 1;
+                if (prevIndex > -1) {
+                    $('.item-others-prev').show();
+                    $('.item-others-prev .item-others-name').html($('.list-content-items tr').eq(prevIndex).find('.list-content-name-text-1').html());
+                    $('.item-others-prev .item-others-genre').html($('.list-content-items tr').eq(prevIndex).find('.list-content-name-inner').attr('rel'));
+                } else {
+                    $('.item-others-prev').hide();
                 }
                 var nextIndex = curIndex + 1;
-                if (nextIndex >= $('.list-content-items tr').length) {
-                    nextIndex = 0;
+                if (nextIndex < $('.list-content-items tr').length) {
+                    $('.item-others-next').show();
+                    $('.item-others-next .item-others-name').html($('.list-content-items tr').eq(nextIndex).find('.list-content-name-text-1').html());
+                    $('.item-others-next .item-others-genre').html($('.list-content-items tr').eq(nextIndex).find('.list-content-name-inner').attr('rel'));
+                } else {
+                    $('.item-others-next').hide();
                 }
-
-                $('.item-others-prev .item-others-name').html($('.list-content-items tr').eq(prevIndex).find('.list-content-name-text-1').html());
-                $('.item-others-prev .item-others-genre').html($('.list-content-items tr').eq(prevIndex).find('.list-content-name-inner').attr('rel'));
-                $('.item-others-next .item-others-name').html($('.list-content-items tr').eq(nextIndex).find('.list-content-name-text-1').html());
-                $('.item-others-next .item-others-genre').html($('.list-content-items tr').eq(nextIndex).find('.list-content-name-inner').attr('rel'));
 
                 $.ajax({
                     url: curLink.attr('href'),
@@ -191,6 +208,12 @@
                 });
             }
             e.preventDefault();
+        });
+
+        $('body').on('keyup', 'form textarea', function(e) {
+            if (e.keyCode == 13 && e.ctrlKey) {
+                $(this).parents().filter('form').submit();
+            }
         });
 
         $('.item-wrap form').each(function() {
