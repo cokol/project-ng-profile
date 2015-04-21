@@ -88,27 +88,28 @@ header:after {content:"."; display:block; clear:both; visibility:hidden; height:
 .list-headers table th.list-content-message-header {padding-left:20px}
 
 .list-content-items {position:relative; overflow:auto; max-height:540px; margin:0 -18px 0 0; outline:none}
-.list-content-inner {padding:0 9px 0 0}
-.list-content table {width:100%; border-spacing:0 4px}
-.list-content table td {background:#fff; vertical-align:middle; padding:9px 10px 8px 10px}
-.list-content table tr.active td {background:#29c205; color:#fff}
-.list-content-items-jury table tr.active td {background:#16162c}
-.list-content table tr.active td a {color:#fff}
-.list-content table td.list-content-name {border-left:2px solid #cdcdcd; padding:9px 10px 8px 8px; white-space:nowrap; vertical-align:top}
-.list-content table td.list-content-name-2 {padding:9px 10px 8px 10px; white-space:nowrap; vertical-align:top}
-.list-content table tr.onread td.list-content-name {border-left-color:#29c205}
-.list-content table tr.unread td.list-content-name {border-left-color:#f60800}
-.list-content table tr.onrate td.list-content-name {border-left-color:#c6edbe}
-.list-content table tr.active.onrate td.list-content-name {border-left-color:#16162c}
+.list-content-inner {padding:0 18px 0 0}
+.jspPane .list-content-inner {padding:0 9px 0 0}
+.list-content .table {display:table; width:100%; border-spacing:0 4px}
+.list-content .table .td {display:table-cell; background:#fff; vertical-align:middle; padding:9px 10px 8px 10px}
+.list-content .table .tr {display:table-row; text-decoration:none}
+.list-content .table .tr:hover .td {background:#fafbfc}
+.list-content .table .tr.active .td {background:#29c205; color:#fff}
+.list-content-items-jury .table .tr.active .td {background:#16162c}
+.list-content .table .td.list-content-name {border-left:2px solid #cdcdcd; padding:9px 10px 8px 8px; white-space:nowrap; vertical-align:top}
+.list-content .table .td.list-content-name-2 {padding:9px 10px 8px 10px; white-space:nowrap; vertical-align:top}
+.list-content .table .tr.onread .td.list-content-name {border-left-color:#29c205}
+.list-content .table .tr.unread .td.list-content-name {border-left-color:#f60800}
+.list-content .table .tr.onrate .td.list-content-name {border-left-color:#c6edbe}
+.list-content .table .tr.active.onrate .td.list-content-name {border-left-color:#16162c}
 .list-content-name-inner {display:table; border-collapse:collapse; text-decoration:none}
 .list-content-avatar {display:table-cell; width:34px; position:relative; line-height:0; vertical-align:middle}
 .list-content-avatar img {position:relative; -moz-border-radius:17px; -webkit-border-radius:17px; border-radius:17px}
 .list-content-name-content {display:table-cell; vertical-align:middle; padding:0 0 0 10px}
 .list-content-name-text-1 {text-transform:uppercase; font:14px/18px ProximaNovaRegular, sans-serif; color:#010101}
-.list-content-name-inner:hover .list-content-name-text-1 {text-decoration:underline}
-.list-content table tr.active .list-content-name-text-1 {color:#fff}
+.list-content .table .tr.active .list-content-name-text-1 {color:#fff}
 .list-content-name-text-2 {color:#393939; font-size:12px; margin:-4px 0 0 0}
-.list-content table tr.active .list-content-name-text-2 {color:#fff}
+.list-content .table .tr.active .list-content-name-text-2 {color:#fff}
 .list-content-player-inner {width:180px}
 .list-content-player-ctrl {float:left; width:21px; height:21px; background:url(../images/list-content-player-ctrl.png); margin:0 9px 0 0; cursor:pointer}
 .list-content-player-progressbar {float:left; border:2px solid #ebf0f3; width:146px; height:11px; margin:3px 0 0 0; position:relative}
@@ -116,28 +117,23 @@ header:after {content:"."; display:block; clear:both; visibility:hidden; height:
 .list-content-genre {font-size:12px}
 .list-content-status {text-align:center}
 .list-content-status {display:inline-block; width:21px; height:21px; background:url(../images/status.png)}
-.list-content-status:hover {background-position:left -21px}
-.list-content table tr.onread .list-content-status {background-position:left -42px}
-.list-content table tr.unread .list-content-status {background-position:left -21px}
-.list-content table tr.active .list-content-status {background-position:left -63px}
+.list-content .table .tr.onread .list-content-status {background-position:left -42px}
+.list-content .table .tr.unread .list-content-status {background-position:left -21px}
+.list-content .table .tr.active .list-content-status {background-position:left -63px}
 .list-content-play {display:inline-block; width:21px; height:21px; background:url(../images/list-content-player-ctrl.png); margin:0 0 0 9px}
-.list-content table tr.active .list-content-play {background-position:left -21px}
+.list-content .table .tr.active .list-content-play {background-position:left -21px}
 .list-content-center {text-align:center; color:#393939; font-size:12px; line-height:15px}
 .list-content-descr {font-size:12px; line-height:15px}
-.list-content-descr a {text-decoration:none}
-.list-content-descr a:hover {text-decoration:underline}
 .list-content-date {font-size:12px; line-height:15px; text-align:center}
-.list-content table td.list-content-message {font-size:14px; line-height:18px; border-left:2px solid #cdcdcd; padding:9px 10px 8px 18px; vertical-align:top}
-.list-content table tr.onread td.list-content-message {border-left-color:#29c205}
-.list-content table tr.unread td.list-content-message {border-left-color:#f60800}
-.list-content table td.list-content-message a {text-decoration:none}
-.list-content table td.list-content-message a:hover {text-decoration:underline}
-.list-content table td.list-content-message-date {font-size:14px; line-height:18px; vertical-align:top; text-align:center}
+.list-content .table .td.list-content-message {font-size:14px; line-height:18px; border-left:2px solid #cdcdcd; padding:9px 10px 8px 18px; vertical-align:top}
+.list-content .table .tr.onread .td.list-content-message {border-left-color:#29c205}
+.list-content .table .tr.unread .td.list-content-message {border-left-color:#f60800}
+.list-content .table .td.list-content-message-date {font-size:14px; line-height:18px; vertical-align:top; text-align:center}
 
 .list-content-rates {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative}
 .list-content-rates-null {opacity:.4}
 .list-content-rates div {display:inline-block; position:relative; font-size:12px; line-height:28px; text-align:center; letter-spacing:0; font-weight:300; color:#000; width:28px; height:28px; margin:0 1px; border-width:1px; border-style:solid; -moz-border-radius:15px; -webkit-border-radius:15px; border-radius:15px}
-.list-content table tr.active .list-content-rates div {color:#fff}
+.list-content .table .tr.active .list-content-rates div {color:#fff}
 .list-content-rates div.list-content-rate-music {border-color:#f72767}
 .list-content-rates div.list-content-rate-vocal {border-color:#00a627}
 .list-content-rates div.list-content-rate-unique {border-color:#00bff6}
